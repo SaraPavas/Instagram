@@ -1,7 +1,9 @@
 package com.accenture.automatizacion.datadrive;
 
 import java.io.FileInputStream;
-
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -16,7 +18,6 @@ public class DataDrivenUsers {
 	public XSSFWorkbook workbook = null;
 	public XSSFSheet sheet = null;
 	public XSSFRow row = null;
-//	public XSSFCol
 	public XSSFCell cell = null;
 	
 	
@@ -30,15 +31,12 @@ public class DataDrivenUsers {
 	
 	public Credenciales getCellData(int rowNum)
     {
-		int col_Num = -1;
+		
         try
         {
         	Credenciales credencial = new Credenciales();
         	String sheetName = "Hoja 1";
-//          row.getLastCellNum()
             sheet = workbook.getSheet(sheetName);
-//            row = sheet.getRow(0);
-//            int rows = sheet.getPhysicalNumberOfRows();
             String colName_user = "";
             String colName_pass = "";
 ////            
@@ -67,6 +65,20 @@ public class DataDrivenUsers {
 			return null;
         }
     }
+	
+	public void setStatus(int rowNum, String xlFilePath, String status) throws Exception{
+		
+		String sheetName = "Hoja 1";
+		
+        sheet = workbook.getSheet(sheetName);
+        row = sheet.getRow(rowNum+1);
+        cell = row.createCell(2);
+        cell.setCellValue(status);
+         
+        FileOutputStream fos = new FileOutputStream(xlFilePath);
+        workbook.write(fos);
+        fos.close();
+	}
 	
 	
 	
