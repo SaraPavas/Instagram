@@ -2,20 +2,20 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="178230" started-at="2017-07-06T15:02:25Z" finished-at="2017-07-06T15:05:23Z">
+  <suite name="Default suite" duration-ms="141464" started-at="2017-07-06T22:22:40Z" finished-at="2017-07-06T22:25:01Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="178230" started-at="2017-07-06T15:02:25Z" finished-at="2017-07-06T15:05:23Z">
+    <test name="Default test" duration-ms="141464" started-at="2017-07-06T22:22:40Z" finished-at="2017-07-06T22:25:01Z">
       <class name="com.accenture.automatizacion.InstagramTesting">
-        <test-method status="PASS" signature="setUpAppium()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="setUpAppium" is-config="true" duration-ms="15147" started-at="2017-07-06T10:02:25Z" finished-at="2017-07-06T10:02:40Z">
+        <test-method status="PASS" signature="setUpAppium()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="setUpAppium" is-config="true" duration-ms="22759" started-at="2017-07-06T17:22:40Z" finished-at="2017-07-06T17:23:02Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpAppium -->
-        <test-method status="PASS" signature="mytest()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="mytest" duration-ms="159234" started-at="2017-07-06T10:02:40Z" finished-at="2017-07-06T10:05:19Z">
+        <test-method status="PASS" signature="mytest()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="mytest" duration-ms="115341" started-at="2017-07-06T17:23:02Z" finished-at="2017-07-06T17:24:58Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- mytest -->
-        <test-method status="PASS" signature="CleanUpAppium()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="CleanUpAppium" is-config="true" duration-ms="3805" started-at="2017-07-06T10:05:19Z" finished-at="2017-07-06T10:05:23Z">
+        <test-method status="PASS" signature="CleanUpAppium()[pri:0, instance:com.accenture.automatizacion.InstagramTesting@148080bb]" name="CleanUpAppium" is-config="true" duration-ms="3325" started-at="2017-07-06T17:24:58Z" finished-at="2017-07-06T17:25:01Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- CleanUpAppium -->

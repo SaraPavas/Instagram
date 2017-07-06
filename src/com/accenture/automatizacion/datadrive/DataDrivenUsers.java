@@ -5,7 +5,10 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -39,45 +42,48 @@ public class DataDrivenUsers {
             sheet = workbook.getSheet(sheetName);
             String colName_user = "";
             String colName_pass = "";
-////            
-//            System.out.println(rows);
-//            for(int i = 1; i <= rows; i++)
-//            {
-////                if(row.getCell(i).getStringCellValue().trim().equals(colName.trim()))
-////                    col_Num = i;
-//            	row = sheet.getRow(i);
-//            }
-//            System.out.println(col_Num);
             row = sheet.getRow(rowNum + 1);
             colName_user = row.getCell(0).getStringCellValue();
             colName_pass = row.getCell(1).getStringCellValue();
             
             credencial.setUsername(colName_user);
             credencial.setPassword(colName_pass);
-            return credencial;
-//            if(cell.getCellTypeEnum() == CellType.STRING)
-//                return cell.getStringCellValue();
             
+            return credencial;     
         }
         catch(Exception e)
         {
-            e.printStackTrace();
+        	System.out.print("\n\t Se presento Excepción: Data Driven is finished" + e.getStackTrace());
 			return null;
         }
     }
 	
-	public void setStatus(int rowNum, String xlFilePath, String status) throws Exception{
+	public void setStatus(int rowNum, String xlFilePath, String status){
 		
 		String sheetName = "Hoja 1";
-		
+		XSSFFont font = workbook.createFont();
+        XSSFCellStyle style = workbook.createCellStyle();
+        
         sheet = workbook.getSheet(sheetName);
         row = sheet.getRow(rowNum+1);
         cell = row.createCell(2);
+     
+        if(status.equals("Correct"))
+        	font.setColor(HSSFColor.GREEN.index);
+        else if(status.equals("Incorrect"))
+        	font.setColor(HSSFColor.RED.index);
+        style.setFont(font);
+        cell.setCellStyle(style);
         cell.setCellValue(status);
-         
-        FileOutputStream fos = new FileOutputStream(xlFilePath);
-        workbook.write(fos);
-        fos.close();
+        
+        try {
+        	FileOutputStream fos = new FileOutputStream(xlFilePath);
+			workbook.write(fos);
+			fos.close();
+		} catch (Exception e) {
+			System.out.print("\n\t Se presento Excepción: Status Data Driven is not written" + e.getStackTrace());
+		}
+        
 	}
 	
 	
