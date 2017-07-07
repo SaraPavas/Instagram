@@ -32,7 +32,7 @@ public class DataDrivenUsers {
 		
 	}
 	
-	public Credenciales getCellData(int rowNum)
+	public Credenciales getCellData(int rowNum,int opcion)
     {
 		
         try
@@ -43,8 +43,8 @@ public class DataDrivenUsers {
             String colName_user = "";
             String colName_pass = "";
             row = sheet.getRow(rowNum + 1);
-            colName_user = row.getCell(0).getStringCellValue();
-            colName_pass = row.getCell(1).getStringCellValue();
+            colName_user = row.getCell(opcion).getStringCellValue();
+            colName_pass = row.getCell(opcion+1).getStringCellValue();
             
             credencial.setUsername(colName_user);
             credencial.setPassword(colName_pass);
@@ -58,7 +58,7 @@ public class DataDrivenUsers {
         }
     }
 	
-	public void setStatus(int rowNum, String xlFilePath, String status){
+	public void setStatus(int rowNum, String xlFilePath, String status,int opcion){
 		
 		String sheetName = "Hoja 1";
 		XSSFFont font = workbook.createFont();
@@ -66,12 +66,13 @@ public class DataDrivenUsers {
         
         sheet = workbook.getSheet(sheetName);
         row = sheet.getRow(rowNum+1);
-        cell = row.createCell(2);
+        cell = row.createCell(opcion);
      
         if(status.equals("Correct"))
         	font.setColor(HSSFColor.GREEN.index);
         else if(status.equals("Incorrect"))
         	font.setColor(HSSFColor.RED.index);
+        
         style.setFont(font);
         cell.setCellStyle(style);
         cell.setCellValue(status);

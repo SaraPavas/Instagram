@@ -1,69 +1,39 @@
-package com.accenture.automatizacion;
-
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+package com.accenture.automatizacion.instagramTest;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import com.accenture.automatizacion.datadrive.DataDrivenUsers;
 import com.accenture.automatizacion.dto.Credenciales;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
-import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidKeyCode;
 
-public class InstagramTesting {
+public class InstagramTest {
 	public static AppiumDriver<WebElement> driver;
 
-	DesiredCapabilities capabilities = new DesiredCapabilities();
+
 	String XFILEPATH = "C://Users//Administrator//Documents//workspace//Instagram//datadrivenlogin.xlsx";
 	boolean FLAG = true;
-
-	@BeforeMethod
-	public void setUpAppium() throws MalformedURLException, InterruptedException {
-
-		String packagename = "com.instagram.android";
-		String URL = "http://127.0.0.1:4723/wd/hub";
-		String activityname = "com.instagram.android.activity.MainTabActivity";
-		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("deviceName", "device");
-		capabilities.setCapability("udid", "7N2UNB159P002533");
-		capabilities.setCapability("platformVersion", "6.0");
-		capabilities.setCapability("platformName", "Android");
-		capabilities.setCapability("appPackage", packagename);
-		capabilities.setCapability("appActivity", activityname);
-		driver = new AndroidDriver<WebElement>(new URL(URL), capabilities);
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	
+	public InstagramTest() {
 
 	}
 
-	@AfterTest
-	public void CleanUpAppium() {
-
-		driver.quit();
-	}
-
-	@Test
-	public void mytest() throws InterruptedException {
+	public void myInstagramtest(AppiumDriver<WebElement> driver,DataDrivenUsers dataDrivenUsers, Credenciales credencial,int i) throws InterruptedException {
 
 		try {
-			String errorMessege="";
+			
 			String name ="";
 			String pass ="";
-			Credenciales credencial = new Credenciales("USUARIO", "CONTRASEÑA");
-			Assert.assertNotNull(driver.getContext());
-			DataDrivenUsers dataDrivenUsers = new DataDrivenUsers(XFILEPATH);
-			int i = 0;
-			credencial = dataDrivenUsers.getCellData(i,0);
+//			Credenciales credencial = new Credenciales("USUARIO", "CONTRASEÑA");
+//			Assert.assertNotNull(driver.getContext());
+//			DataDrivenUsers dataDrivenUsers = new DataDrivenUsers(XFILEPATH);
+//			int i = 0;
+//			credencial = dataDrivenUsers.getCellData(i,0);
 
 			/**
 			 * Se dirige a la opción ¿Ya tienes una cuenta? Inicia Sesión
@@ -72,7 +42,7 @@ public class InstagramTesting {
 			/**
 			 * Ciclo para recorrer el data driven
 			 */
-			do {
+//			do {
 
 				/**
 				 * Controla inicios de sesión diferentes
@@ -135,7 +105,7 @@ public class InstagramTesting {
 				 * la cámara, el login es correcto, si el botón no se encuentra
 				 * lanza la excepción
 				 */
-				errorMessege=login.getText();
+
 				try {
 
 					WebElement logincheck = driver.findElement(By.xpath("//*[@content-desc='Cámara']"));
@@ -237,8 +207,7 @@ public class InstagramTesting {
 					dataDrivenUsers.setStatus(i, XFILEPATH, "Incorrect",2);
 					((AndroidDeviceActionShortcuts) driver).pressKeyCode(AndroidKeyCode.BACK);
 					((AndroidDeviceActionShortcuts) driver).pressKeyCode(AndroidKeyCode.BACK);
-//					System.out.print("\n\t Se presento Excepción: Faild Login: \n" + e.getMessage());
-					System.out.print("\n\t--------Login Incorrecto: \n\t"+errorMessege);
+					System.out.print("\n\t Se presento Excepción: Faild Login: \n" + e.getMessage());
 					// e.get
 
 				}
@@ -259,10 +228,11 @@ public class InstagramTesting {
 				i++;
 				credencial = dataDrivenUsers.getCellData(i,0);
 
-			} while (credencial != null);
+//			} while (credencial != null);
 		} catch (Exception e) {
 			System.out.print("\n\t Se presento Excepción: Element not found: \n" + e.getStackTrace());
 			// System.out.print("\n\t Se presento Excepción " + e);
 		}
 	}
+
 }
