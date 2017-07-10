@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="94987" started-at="2017-07-07T14:47:14Z" finished-at="2017-07-07T14:48:49Z">
+  <suite name="Default suite" duration-ms="8065" started-at="2017-07-10T14:07:28Z" finished-at="2017-07-10T14:07:36Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="94987" started-at="2017-07-07T14:47:14Z" finished-at="2017-07-07T14:48:49Z">
+    <test name="Default test" duration-ms="8065" started-at="2017-07-10T14:07:28Z" finished-at="2017-07-10T14:07:36Z">
       <class name="com.accenture.automatizacion.InstagramAndPinterestTesting">
-        <test-method status="PASS" signature="myInstagramtest()[pri:0, instance:com.accenture.automatizacion.InstagramAndPinterestTesting@2d928643]" name="myInstagramtest" duration-ms="94955" started-at="2017-07-07T09:47:14Z" finished-at="2017-07-07T09:48:49Z">
+        <test-method status="PASS" signature="myInstagramtest()[pri:0, instance:com.accenture.automatizacion.InstagramAndPinterestTesting@2d928643]" name="myInstagramtest" duration-ms="8013" started-at="2017-07-10T09:07:28Z" finished-at="2017-07-10T09:07:36Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- myInstagramtest -->

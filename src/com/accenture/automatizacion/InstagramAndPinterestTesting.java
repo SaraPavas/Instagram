@@ -51,16 +51,17 @@ public class InstagramAndPinterestTesting {
 				name=credencial.getUsername();
 				pass=credencial.getPassword();
 				System.out.println("Para la credencial: \nUsuario: "+name+"\nCOntraseña: "+pass+"\nIngrese P: Login en Pinterest\n\tI: Login en Instagram");
-				option = scaner.nextLine();
+				option = scaner.nextLine().toLowerCase();
 				switch (option) {
 
-				case "I":
+				case "i":
 					packagename = "com.instagram.android";
 					URL = "http://127.0.0.1:4723/wd/hub";
 					activityname = "com.instagram.android.activity.MainTabActivity";
 
 					capabilities.setCapability("deviceName", "device");
-					capabilities.setCapability("udid", "7N2UNB159P002533");
+//					capabilities.setCapability("udid", "7N2UNB159P002533");
+					capabilities.setCapability("udid", "192.168.3.210:5555");
 					capabilities.setCapability("platformVersion", "6.0");
 					capabilities.setCapability("platformName", "Android");
 					capabilities.setCapability("appPackage", packagename);
@@ -70,12 +71,16 @@ public class InstagramAndPinterestTesting {
 					instagramTest.myInstagramtest(driver,dataDrivenUsers,credencial,i);
 					Assert.assertNotNull(driver.getContext());
 					Thread.sleep(10000);
+					driver.quit();
+					i++;
+					credencial = dataDrivenUsers.getCellData(i,0);
 					break;
-				case "P":
+				case "p":
 					packagename = "com.pinterest";
 					URL = "http://127.0.0.1:4723/wd/hub";
 					activityname = "com.pinterest.activity.PinterestActivity";
 					capabilities.setCapability("deviceName", "device");
+//					capabilities.setCapability("udid", "7N2UNB159P002533");
 					capabilities.setCapability("udid", "7N2UNB159P002533");
 					capabilities.setCapability("platformVersion", "6.0");
 					capabilities.setCapability("platformName", "Android");
@@ -84,17 +89,22 @@ public class InstagramAndPinterestTesting {
 					driver = new AndroidDriver<WebElement>(new URL(URL), capabilities);
 					driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 					credencial = dataDrivenUsers.getCellData(i,3);
+					name=credencial.getUsername();
+					pass=credencial.getPassword();
+					System.out.println(i+" Para la credencial: \nUsuario: "+name+"\nCOntraseña: "+pass+"\nIngrese P: Login en Pinterest\n\tI: Login en Instagram");
 					pinterestTest.myPinterestTest(driver,dataDrivenUsers,credencial,i);
 					Thread.sleep(10000);
+					driver.quit();
+					i++;
+					credencial = dataDrivenUsers.getCellData(i,0);
 					break;
 				default:
+					System.out.println("Ingrese una opción correcta");
 					break;
 				}
 //				count++;
 //				option = "P";
-				driver.quit();
-				i++;
-				credencial = dataDrivenUsers.getCellData(i,0);
+				
 				
 			} while (credencial != null);
 //			}while(count<2);
@@ -102,5 +112,9 @@ public class InstagramAndPinterestTesting {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("---------------FIN DE LA PRUEBA-----------");
+		
 	}
+	
 }

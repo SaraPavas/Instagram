@@ -82,7 +82,7 @@ public class DataDrivenUsers {
 			workbook.write(fos);
 			fos.close();
 		} catch (Exception e) {
-			System.out.print("\n\t Se presento Excepción: Status Data Driven is not written" + e.getStackTrace());
+			System.out.print("\n\t Se presento Excepción: Status Data Driven is not written" + e);
 		}
         
 	}
