@@ -11,7 +11,11 @@ import com.accenture.automatizacion.dto.Credenciales;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
 import io.appium.java_client.android.AndroidKeyCode;
-
+/**
+ * Prueba login, flujo de actividad y deslogueo para la aplicaciòn Instagram
+ * @author Administrator
+ *
+ */
 public class InstagramTest {
 	public static AppiumDriver<WebElement> driver;
 

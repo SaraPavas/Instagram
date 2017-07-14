@@ -17,7 +17,11 @@ import com.accenture.automatizacion.dto.Credenciales;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDeviceActionShortcuts;
 import io.appium.java_client.android.AndroidKeyCode;
-
+/**
+ * Prueba login, flujo de actividad y deslogueo para la aplicaciòn Pinterest
+ * @author Administrator
+ *
+ */
 public class PinterestTest {
 
 	public final String FILE_PATH = "C://Users//Administrator//Documents//workspace//Instagram//datadrivenlogin.xlsx";
@@ -27,7 +31,12 @@ public class PinterestTest {
 	public PinterestTest() {
 
 	}
-
+	/**
+	 * Verifica si existe un elemento en la vista
+	 * @param by
+	 * @param driver
+	 * @return
+	 */
 	private WebElement findElement(By by, AppiumDriver<WebElement> driver) {
 		WebElement element = null;
 		try {
@@ -39,7 +48,14 @@ public class PinterestTest {
 
 		return element;
 	}
-
+	/**
+	 * Test completo para Pinterest.
+	 * @param driver
+	 * @param dataDrivenUser
+	 * @param credential
+	 * @param rowNum
+	 * @throws InterruptedException
+	 */
 	public void myPinterestTest(AppiumDriver<WebElement> driver, DataDrivenUsers dataDrivenUser,
 			Credenciales credential, int rowNum) throws InterruptedException {
 

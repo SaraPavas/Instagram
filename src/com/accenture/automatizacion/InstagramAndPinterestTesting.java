@@ -28,7 +28,12 @@ public class InstagramAndPinterestTesting {
 	String option = "";
 	InstagramTest instagramTest = new InstagramTest();
 	PinterestTest pinterestTest = new PinterestTest();
-
+/**
+ * Test para dos aplicaciones INstagram y Pinterest. Por una credencial, el usuario elige la aplicaciòn para hacer 
+ * la automatizaciòn
+ * @throws MalformedURLException
+ * @throws InterruptedException
+ */
 	@Test
 	public void myInstagramtest() throws MalformedURLException, InterruptedException {
 		try {
@@ -60,8 +65,8 @@ public class InstagramAndPinterestTesting {
 					activityname = "com.instagram.android.activity.MainTabActivity";
 
 					capabilities.setCapability("deviceName", "device");
-//					capabilities.setCapability("udid", "7N2UNB159P002533");
-					capabilities.setCapability("udid", "192.168.3.210:5555");
+					capabilities.setCapability("udid", "7N2UNB159P002533");
+//					capabilities.setCapability("udid", "192.168.3.210:6668");
 					capabilities.setCapability("platformVersion", "6.0");
 					capabilities.setCapability("platformName", "Android");
 					capabilities.setCapability("appPackage", packagename);
@@ -73,7 +78,9 @@ public class InstagramAndPinterestTesting {
 					Thread.sleep(10000);
 					driver.quit();
 					i++;
+					driver = null;
 					credencial = dataDrivenUsers.getCellData(i,0);
+				
 					break;
 				case "p":
 					packagename = "com.pinterest";
@@ -96,6 +103,7 @@ public class InstagramAndPinterestTesting {
 					Thread.sleep(10000);
 					driver.quit();
 					i++;
+					driver = null;
 					credencial = dataDrivenUsers.getCellData(i,0);
 					break;
 				default:
